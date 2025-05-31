@@ -1,5 +1,8 @@
 # MI4Rec
 
+## Datasets
+Please download the preprocessed datasets in this [link](https://drive.google.com/drive/folders/1i_Ksbk7nw8GQgf9BK0giGgEWu67D9cgQ?usp=sharing).
+
 ## Run Experiments
 ```bash
 # Install environments
