@@ -869,36 +869,4 @@ class DynamicCollaborativeGPTwithItemRecommendHead(nn.Module):
         return outputs
 
 
-# if __name__ == "__main__":
-#     memory = UserItemMemory()
-#     vocab_file = '/data/sjc4fq/tokenizers/gpt2/vocab.json'
-#     merges_file = '/data/sjc4fq/tokenizers/gpt2/merges.txt'
-#     meta_path = '/data/sjc4fq/LLM4Rec/sports/meta.pkl'
-    
-#     meta_data = pickle.load(open(meta_path, 'rb'))
-#     num_users = meta_data["num_users"]
-#     num_items = meta_data["num_items"]
-#     from tokenizer import DynamicBPETokenizerBatch
-#     from data import *
-#     tokenizer = DynamicBPETokenizerBatch(vocab_file,
-#                                         merges_file,
-#                                         num_users,
-#                                         num_items,
-#                                         memory,
-#                                         [],
-#                                         ['/data/sjc4fq/LLM4Rec/sports/item_texts/title.txt'])
-#     review_data_gen = UserItemContentGPTDatasetBatch(tokenizer, '/data/sjc4fq/LLM4Rec/sports/user_item_texts/review.pkl')
-#     train_mat = load_npz('/data/sjc4fq/LLM4Rec/sports/train_matrix.npz')
-#     collaborative_data_gen = CollaborativeGPTGeneratorBatch(tokenizer, train_mat)
-#     LLMmodel = AutoModel.from_pretrained('gpt2')
-#     content_base_model = DynamicDPELLM4RecBaseModel(
-#         config, 
-#         LLMmodel, 
-#         memory, 
-#         AutoTokenizer.from_pretrained(bert_tokenizer_path), # TODO: use local tokenizer
-#         AutoModelForSequenceClassification.from_pretrained(bert_model_path, num_labels=num_meta, ignore_mismatched_sizes=True), # TODO: use local classifier
-#         device=device,
-#         num_item_meta=args.num_meta
-#     )
-    
     
