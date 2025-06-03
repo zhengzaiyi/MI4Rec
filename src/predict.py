@@ -311,7 +311,6 @@ def main():
                 cold_mean = cold_scores.mean(dim=1, keepdim=True)
                 cold_std = cold_scores.std(dim=1, keepdim=True) + 1e-6
 
-                # 归一化到标准正态 -> 再拉伸到warm的均值方差
                 calibrated_cold_scores = (cold_scores - cold_mean) / cold_std * warm_std + warm_mean
                 item_scores[:, cold_item_idx] = calibrated_cold_scores
                 # ====== calibration结束 ======
@@ -355,7 +354,6 @@ def main():
                 cold_mean = cold_scores.mean(dim=1, keepdim=True)
                 cold_std = cold_scores.std(dim=1, keepdim=True) + 1e-6
 
-                # 归一化到标准正态 -> 再拉伸到warm的均值方差
                 calibrated_cold_scores = (cold_scores - cold_mean) / cold_std * warm_std + warm_mean
                 warm_item_scores[:, cold_item_idx] = calibrated_cold_scores
                 warm_item_scores[warm_train_mat > 0] = -float("inf")
@@ -399,7 +397,6 @@ def main():
                 cold_mean = cold_scores.mean(dim=1, keepdim=True)
                 cold_std = cold_scores.std(dim=1, keepdim=True) + 1e-6
 
-                # 归一化到标准正态 -> 再拉伸到warm的均值方差
                 calibrated_cold_scores = (cold_scores - cold_mean) / cold_std * warm_std + warm_mean
                 cold_item_scores[:, cold_item_idx] = calibrated_cold_scores
                 cold_item_scores[cold_train_mat > 0] = -float("inf")
