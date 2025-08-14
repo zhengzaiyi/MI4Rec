@@ -1,4 +1,4 @@
-# MI4Rec
+# Pretrained Language Model based Cold-Start Recommendation with Meta-Item Embeddings
 
 ## Datasets
 Please download the preprocessed datasets in this [link](https://drive.google.com/drive/folders/1i_Ksbk7nw8GQgf9BK0giGgEWu67D9cgQ?usp=sharing).
