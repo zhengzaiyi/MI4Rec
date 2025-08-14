@@ -17,7 +17,6 @@ skip_pt=""
 
 for dataset in ${datasets[@]}; do
     for num_meta in ${num_metas[@]}; do
-        accelerate launch --multi_gpu --num_processes=$num_processes src/encoder_pt.py --dataset $dataset
         accelerate launch --multi_gpu --num_processes=$num_processes src/warm_pt.py --dataset $dataset --model $model --lambda_V $lambda_V --batch_size $batch_size --num_meta $num_meta --item_logits_infer $item_logits_infer -p $prob_norm -lr $pt_lr -c $cold_start
         accelerate launch --multi_gpu --num_processes=$num_processes src/warm_ft.py --dataset $dataset --model $model --lambda_V $lambda_M --batch_size $batch_size --num_meta $num_meta --item_logits_infer $item_logits_infer -p $prob_norm -lr $ft_lr -c $cold_start --pt_lr $pt_lr --pt_lv $lambda_V $skip_pt
         python predict.py --dataset $dataset --model $model --lambda_V $lambda_M --num_meta $num_meta --item_logits_infer $item_logits_infer -p $prob_norm -lr $ft_lr -c $cold_start
